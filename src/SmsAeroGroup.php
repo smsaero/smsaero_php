@@ -32,6 +32,8 @@ class SmsAeroGroup extends SmsAeroClient
     }
 
     /**
+     * Получение списка групп
+     *
      * @param $params
      * - integer page Номер страницы|Необязательно
      * @return array

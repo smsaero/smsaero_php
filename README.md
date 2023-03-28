@@ -3,6 +3,11 @@
 SDK для работы с SMSAero API на языке PHP.
 #### Все методы принимают параметры указанные в документации https://smsaero.ru/integration/documentation/api в виде массива(исключения: методы которые требуют передачу только идентификатора, они принимают сразу ID)
 
+### Установка
+```bash
+composer require guzzlehttp/guzzle
+```
+
 ## Робота с SMS сообщениями
 ```php
 $smsAeroMessage = new \SmsAero\SmsAeroMessage(['Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP']);

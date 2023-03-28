@@ -5,7 +5,7 @@ SDK для работы с SMSAero API на языке PHP.
 
 ### Установка
 ```bash
-composer require guzzlehttp/guzzle
+composer require smsaero/smsaero_api
 ```
 
 ## Робота с SMS сообщениями

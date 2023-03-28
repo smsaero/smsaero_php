@@ -12,82 +12,82 @@ composer require smsaero/smsaero_api
 ```php
 $smsAeroMessage = new \SmsAero\SmsAeroMessage(['Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP']);
 // Отправка SMS сообщений
-$request = $smsAeroMessage->send(['number' => 'номер абонента', 'text' => 'текст сообщения', 'sign' => 'подпись отправителя(можно получить в личном кабинете smsaero.ru или использовать подпись: SMS Aero)']);
+$response = $smsAeroMessage->send(['number' => 'номер абонента', 'text' => 'текст сообщения', 'sign' => 'подпись отправителя(можно получить в личном кабинете smsaero.ru или использовать подпись: SMS Aero)']);
 // Проверка статуса SMS сообщения
-$request = $smsAeroMessage->getStatus($id);
+$response = $smsAeroMessage->getStatus($id);
 // Получение списка отправленных сообщений
-$request = $smsAeroMessage->getList();
+$response = $smsAeroMessage->getList();
 ```
 
 ## Робота с контактами
 ```php
 $smsAeroContact = new \SmsAero\SmsAeroContact(['Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP']);
 // Добавление контакта
-$request = $smsAeroContact->create(['number' => 'номер абонента']);
+$response = $smsAeroContact->create(['number' => 'номер абонента']);
 // Удаление контакта
-$request = $smsAeroContact->delete($id);
+$response = $smsAeroContact->delete($id);
 // Список контактов
-$request = $smsAeroContact->getList();
+$response = $smsAeroContact->getList();
 // Добавление в черный список
-$request = $smsAeroContact->toBlacklist(['number' => 'номер абонента']);
+$response = $smsAeroContact->toBlacklist(['number' => 'номер абонента']);
 // Удаление из черного списка
-$request = $smsAeroContact->deleteFromBlacklist($id);
+$response = $smsAeroContact->deleteFromBlacklist($id);
 // Список контактов в черном списке
-$request = $smsAeroContact->getBlacklist();
+$response = $smsAeroContact->getBlacklist();
 // Создание запроса на проверку HLR
-$request = $smsAeroContact->check(['number' => 'номер абонента']);
+$response = $smsAeroContact->check(['number' => 'номер абонента']);
 // Получение статуса HLR
-$request = $smsAeroContact->status($id);
+$response = $smsAeroContact->status($id);
 // Определение оператора
-$request = $smsAeroContact->getOperator(['number' => 'номер абонента']);
+$response = $smsAeroContact->getOperator(['number' => 'номер абонента']);
 ```
 
 ## Робота с группами
 ```php
 $smsAeroGroup = new \SmsAero\SmsAeroGroup(['Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP']);
 // Добавление группы
-$request = $smsAeroGroup->create(['name' => 'название новой группы']);
+$response = $smsAeroGroup->create(['name' => 'название новой группы']);
 // Удаление группы
-$request = $smsAeroGroup->delete($id);
+$response = $smsAeroGroup->delete($id);
 // Получение списка групп 
-$request = $smsAeroGroup->getList();
+$response = $smsAeroGroup->getList();
 ```
 
 ## Робота с профилем
 ```php
-$request = $smsAeroUser = new \SmsAero\SmsAeroUser(['Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP']);
+$response = $smsAeroUser = new \SmsAero\SmsAeroUser(['Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP']);
 // Запрос баланса
-$request = $smsAeroUser->getBalance();
+$response = $smsAeroUser->getBalance();
 // Запрос тарифа
-$request = $smsAeroUser->getTariffs();
+$response = $smsAeroUser->getTariffs();
 // Карты пользователя
-$request = $smsAeroUser->getCards();
+$response = $smsAeroUser->getCards();
 // Пополнение баланса
-$request = $smsAeroUser->charge(['cardId' => $cardId, 'sum' => $sum]);
+$response = $smsAeroUser->charge(['cardId' => $cardId, 'sum' => $sum]);
 ```
 
 ## Робота с Viber сообщениями
 ```php
-$request = $smsAeroViber = new \SmsAero\SmsAeroViber(['Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP']);
+$response = $smsAeroViber = new \SmsAero\SmsAeroViber(['Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP']);
 // Создание Viber-рассылки
-$request = $smsAeroViber->send(['number' => 'номер абонента', 'sign' => 'имя отправителя', 'channel' => 'OFFICIAL', 'text' => 'текст сообщения']);
+$response = $smsAeroViber->send(['number' => 'номер абонента', 'sign' => 'имя отправителя', 'channel' => 'OFFICIAL', 'text' => 'текст сообщения']);
 // Статистика по Viber-рассылке
-$request = $smsAeroViber->getStat($id);
+$response = $smsAeroViber->getStat($id);
 // Список Viber-рассылок
-$request = $smsAeroViber->getList();
+$response = $smsAeroViber->getList();
 //Список доступных имен для Viber-рассылок
-$request = $smsAeroViber->getSigns();
+$response = $smsAeroViber->getSigns();
 ```
 
 ## Обработка ответа
 ```php
-if ($request['success']) {
+if ($response['success']) {
     echo 'Успешны запрос';
     // Массив с данными для дальнейшего действия
-    print_r($request['data');
+    print_r($response['data');
 } else {
     echo 'Ошибка авторизации или валидации';
     // Массив или сообщение содержащие детальную информацию
-    print_r($request['message');
+    print_r($response['message');
 }
 ```

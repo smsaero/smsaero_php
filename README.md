@@ -8,7 +8,7 @@ SDK для работы с SMSAero API на языке PHP.
 composer require smsaero/smsaero_api
 ```
 
-## Робота с SMS сообщениями
+## Работа с SMS сообщениями
 ```php
 $smsAeroMessage = new \SmsAero\SmsAeroMessage(['Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP']);
 // Отправка SMS сообщений
@@ -19,7 +19,7 @@ $response = $smsAeroMessage->getStatus($id);
 $response = $smsAeroMessage->getList();
 ```
 
-## Робота с контактами
+## Работа с контактами
 ```php
 $smsAeroContact = new \SmsAero\SmsAeroContact(['Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP']);
 // Добавление контакта
@@ -42,7 +42,7 @@ $response = $smsAeroContact->status($id);
 $response = $smsAeroContact->getOperator(['number' => 'номер абонента']);
 ```
 
-## Робота с группами
+## Работа с группами
 ```php
 $smsAeroGroup = new \SmsAero\SmsAeroGroup(['Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP']);
 // Добавление группы
@@ -53,7 +53,7 @@ $response = $smsAeroGroup->delete($id);
 $response = $smsAeroGroup->getList();
 ```
 
-## Робота с профилем
+## Работа с профилем
 ```php
 $response = $smsAeroUser = new \SmsAero\SmsAeroUser(['Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP']);
 // Запрос баланса
@@ -66,7 +66,7 @@ $response = $smsAeroUser->getCards();
 $response = $smsAeroUser->charge(['cardId' => $cardId, 'sum' => $sum]);
 ```
 
-## Робота с Viber сообщениями
+## Работа с Viber сообщениями
 ```php
 $response = $smsAeroViber = new \SmsAero\SmsAeroViber(['Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP']);
 // Создание Viber-рассылки

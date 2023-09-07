@@ -127,6 +127,6 @@ if ($response['success']) {
 } else {
     echo 'Ошибка авторизации или валидации';
     // Массив или сообщение содержащие детальную информацию
-    print_r($response['message');
+    print_r($response['message']);
 }
 ```

@@ -107,7 +107,7 @@ $response = $smsAeroWhatsapp->getAllMsg(['offset' => 100, 'limit' => 100, 'timeF
 
 ## Работа с Viber сообщениями
 ```php
-$response = $smsAeroViber = new \SmsAero\SmsAeroViber(['Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP']);
+$response = $smsAeroViber = new \SmsAero\SmsAeroViber('Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP');
 // Создание Viber-рассылки
 $response = $smsAeroViber->send(['number' => 'номер абонента', 'sign' => 'имя отправителя', 'channel' => 'OFFICIAL', 'text' => 'текст сообщения']);
 // Статистика по Viber-рассылке

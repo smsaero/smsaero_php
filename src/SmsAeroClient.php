@@ -6,7 +6,12 @@ class SmsAeroClient
 {
     private $userLogin;
     private $apiKey;
-    private $baseUrl = 'https://gate.smsaero.ru/v2/';
+    private $baseUrls = [
+        'https://gate.smsaero.ru/v2/',
+        'https://gate.smsaero.org/v2/',
+        'https://gate.smsaero.net/v2/',
+        'https://gate.smsaero.uz/v2/'
+    ];
 
     /**
      * Конструктор класса, который устанавливает значения для userLogin и apiKey.
@@ -36,10 +41,18 @@ class SmsAeroClient
             throw new \Exception('Расширение curl не установлено');
         }
 
+        $apiUrl = null;
+        foreach ($this->baseUrls as $baseUrl) {
+            if ($this->isApiAvailable($baseUrl)) {
+                $apiUrl = $baseUrl;
+                break;
+            }
+        }
+
         $curl = curl_init();
 
         // Устанавливаем параметры для запроса.
-        $url = $this->baseUrl . $url;
+        $url = $apiUrl . $url;
 
         if ($method == 'GET' && !empty($params)) {
             $url .= '?' . http_build_query($params);
@@ -68,5 +81,20 @@ class SmsAeroClient
         curl_close($curl);
 
         return json_decode($result, true);
+    }
+
+    private function isApiAvailable($url) {
+        $curlInit = curl_init($url);
+
+        curl_setopt($curlInit,CURLOPT_CONNECTTIMEOUT,5);
+        curl_setopt($curlInit,CURLOPT_HEADER,true);
+        curl_setopt($curlInit,CURLOPT_NOBODY,true);
+        curl_setopt($curlInit,CURLOPT_RETURNTRANSFER,true);
+
+        $response = curl_exec($curlInit);
+
+        curl_close($curlInit);
+
+        return (bool)$response;
     }
 }

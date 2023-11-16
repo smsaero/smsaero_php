@@ -121,7 +121,7 @@ $response = $smsAeroViber->getSigns();
 ## Обработка ответа
 ```php
 if ($response['success']) {
-    echo 'Успешны запрос';
+    echo 'Успешный запрос';
     // Массив с данными для дальнейшего действия
     print_r($response['data');
 } else {

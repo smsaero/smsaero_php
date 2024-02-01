@@ -58,6 +58,8 @@ class SmsAeroClient
             $url .= '?' . http_build_query($params);
         }
 
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -86,6 +88,8 @@ class SmsAeroClient
     private function isApiAvailable($url) {
         $curlInit = curl_init($url);
 
+        curl_setopt($curlInit, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curlInit, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curlInit,CURLOPT_CONNECTTIMEOUT,5);
         curl_setopt($curlInit,CURLOPT_HEADER,true);
         curl_setopt($curlInit,CURLOPT_NOBODY,true);

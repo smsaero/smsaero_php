@@ -118,6 +118,17 @@ $response = $smsAeroViber->getList();
 $response = $smsAeroViber->getSigns();
 ```
 
+## Работа с Telegram сообщениями
+```php
+$response = $smsAeroTelegram = new \SmsAero\SmsAeroTelegram('Ваш E-mail на сайте', 'apiKey можно посмотреть в личном кабинете в разделе настройки -> API и SMPP');
+// Отправка кода в Telegram
+$response = $smsAeroTelegram->send(['number' => 'номер абонента', 'code' => 1234]);
+// Отправка каскада Telegram -> СМС, в случае недоставки кода в Telegram, будет отправлено SMS с указанными значениями
+$response = $smsAeroTelegram->send(['number' => 'номер абонента', 'code' => 1234, 'sign' => 'SMS Aero', 'text' => 'Текст СМС сообщения']);
+// Проверка статуса кода в Telegram
+$response = $smsAeroTelegram->getStatus($id)
+```
+
 ## Обработка ответа
 ```php
 if ($response['success']) {
